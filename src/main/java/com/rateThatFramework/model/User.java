@@ -1,4 +1,4 @@
-package com.rateThatFramework;
+package com.rateThatFramework.model;
 
 /**
  * Created by hanne_000 on 26.04.2016.
