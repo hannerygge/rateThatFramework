@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rateThatFramework:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="rateThatFramework-1.war">
+      <element id="artifact" artifact-name="rateThatFramework:war exploded" />
+    </root>
+  </artifact>
+</component>
