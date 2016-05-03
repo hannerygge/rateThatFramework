@@ -7,6 +7,8 @@ import org.hibernate.*;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class DBHandler implements ApplicationContextAware {
     public List Query(String input, Class expect) {
         System.out.println("input = " + input);
         List results = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();;
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
@@ -51,6 +53,25 @@ public class DBHandler implements ApplicationContextAware {
         session.close();
 
 
+    }
+
+    public boolean deleteById(Class<?> type, Serializable id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();;
+        Transaction tx = session.beginTransaction();
+        Object persistentInstance = session.load(type, id);
+        if (persistentInstance != null) {
+            session.delete(persistentInstance);
+            System.out.println("delete true!");
+        }
+        else
+        {
+            System.out.println("delete FALSE!");
+            session.close();
+            return false;
+        }
+        tx.commit();
+        session.close();
+        return true;
     }
 
 

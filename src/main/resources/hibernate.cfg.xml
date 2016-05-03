@@ -20,4 +20,6 @@
         <mapping resource="Rating.hbm.xml"/>
         <mapping resource="Review.hbm.xml"/>
     </session-factory>
+
 </hibernate-configuration>
+

@@ -11,10 +11,6 @@
 </head>
 <body>
 
-
-<h2>Edit Framework</h2>
-
-
 <h2>Edit Framework</h2>
 
 <table border="1">
@@ -67,17 +63,17 @@
                 <td>${user.admin}</td>
                 <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
 
-                <form:form action="edit" method="post">
-                    <input type="hidden" value="${status.index + 1}" id="editID">
+                <form:form action="edit/update" method="post">
+                    <input type="hidden" value="${user}">
 
-                    <input type="submit" id="editUserButton" value="Register changes">
+                    <td><input type="submit" id="editUserButton" value="Register changes"></td>
                 </form:form>
 
-                <form:form action="delete" method="post">
+                <form:form action="edit/delete" method="post">
 
-                    <input type="hidden" value="${status.index + 1}" id="deleteID">
+                    <td><input type="hidden" value="${user}">
 
-                    <input type="submit" id="deleteUser" value="Delete User">
+                    <input type="submit" id="deleteUser" value="Delete User"></td>
                 </form:form>
             </tr>
         </c:forEach>
