@@ -2,6 +2,9 @@ package com.rateThatFramework;
 
 
 import com.rateThatFramework.model.*;
+import com.rateThatFramework.utils.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,11 +35,16 @@ public class LoginController {
         String password = input.getPassword();
         List<User> results = null;
 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
         //check username/password in db
 
         //find user in db
-        String query = "SELECT * FROM USERS WHERE name = '" + username + "'";
-        results = db.Query(query, User.class);
+     //   String query = "SELECT * FROM USERS WHERE name = '" + username + "'";
+       // results = db.Query(query, User.class);
+
+        Query query = session.createQuery("from User where username = :username");
+        //query.setParameter("username", User);
 
         if(results == null){
             modelMap.put("error", "Invalid UserName / Password");
@@ -48,7 +56,7 @@ public class LoginController {
             return "redirect:login";
         }
         User user = results.get(0);
-        if(!(password != user.getPassword())){
+        if(!(password == user.getPassword())){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
