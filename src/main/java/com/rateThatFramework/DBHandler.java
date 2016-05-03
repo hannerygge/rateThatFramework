@@ -1,24 +1,25 @@
 package com.rateThatFramework;
 
-import com.rateThatFramework.model.User;
+import com.rateThatFramework.utils.HibernateUtil;
 import org.hibernate.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-
-import javax.servlet.ServletContext;
+import org.springframework.context.ApplicationContextAware;
 import java.util.List;
 
 /**
  * Created by Andre on 03.05.2016.
  */
-public class DBHandler {
-    @Autowired
-    ApplicationContext context;
+public class DBHandler implements ApplicationContextAware {
+    private ApplicationContext context;
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
+    }
 
     public List Query(String input, Class expect) {
         List results = null;
-        SessionFactory sessionFact = (SessionFactory) context.getBean("sessionFactory");
-        Session session = sessionFact.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();;
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
@@ -50,4 +51,6 @@ public class DBHandler {
 
 
     }
+
+
 }
