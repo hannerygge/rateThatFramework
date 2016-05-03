@@ -15,10 +15,10 @@
 <body>
 
 
-    <form:form action="createUser" method="post" id="createUser">
-        <input name="username" placeholder="Username">
+    <form:form action="user" method="post">
+        <input name="name" placeholder="name">
         <input name="email" placeholder="E-mail">
-        <password name="password">
+        Enter Password :<input type="password" name="password"/><br/>
         <input type="submit" value="Register new user">
     </form:form>
 

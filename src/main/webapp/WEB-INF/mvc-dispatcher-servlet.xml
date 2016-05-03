@@ -37,14 +37,14 @@
           p:viewName="user" />
 
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-    <property name="mappings">
-        <props>
-            <prop key="home.jsp">HomeController</prop>
-            <prop key="login.jsp">LoginController</prop>
-            <prop key="user.jsp">UserController</prop>
-        </props>
-    </property>
-</bean>
+        <property name="mappings">
+            <props>
+                <prop key="home.jsp">HomeController</prop>
+                <prop key="login.jsp">LoginController</prop>
+                <prop key="user.jsp">UserController</prop>
+            </props>
+        </property>
+    </bean>
 
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>

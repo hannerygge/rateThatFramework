@@ -16,16 +16,16 @@ import javax.validation.Valid;
 public class UserController {
 
 
-/*
-    @RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping(value="/user", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
-        return "/home";
-    }*/
+        return "registerNewUser";
+    }
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    public boolean insert(ModelMap modelMap, @ModelAttribute("user") @Valid User user) {
+    @RequestMapping(value="/user", method = RequestMethod.POST)
+    public String submit(ModelMap modelMap, @ModelAttribute("user") @Valid User user) {
 
         String name = user.getName();
         String email = user.getEmail();
@@ -41,12 +41,12 @@ public class UserController {
 
         if (rows > 0) {
             modelMap.put("","Successfully added user :D" );
-            return true;
+            return "true";
         }
         else
         {
             modelMap.put("", "You failed!");
-            return false;
+            return "false";
 
         }
 

@@ -29,7 +29,7 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value="login", method = RequestMethod.POST)
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("LoginUser") @Valid LoginUser input) {
         String username = input.getUsername();
         String password = input.getPassword();
