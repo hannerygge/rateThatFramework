@@ -19,5 +19,10 @@
 
 </form:form>
 
+<form:form action="registerNewUser" method="get">
+    Register new user: <input type="submit" id="newUserButton" value="New User">
+
+</form:form>
+
 </body>
 </html>
