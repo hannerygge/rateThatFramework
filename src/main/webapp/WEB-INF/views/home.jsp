@@ -13,7 +13,7 @@
     <h1>Contact List</h1>
     <table border="1">
         <th>No</th>
-        <th>Username</th>
+        <th>Name</th>
         <th>Email</th>
 
         <c:forEach var="user" items="${userList}" varStatus="status">
