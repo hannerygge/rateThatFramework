@@ -26,7 +26,7 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="login", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("LoginUser") @Valid LoginUser input) {
         String username = input.getUsername();
         String password = input.getPassword();
@@ -40,18 +40,18 @@ public class LoginController {
 
         if(results == null){
             modelMap.put("error", "Invalid UserName / Password");
-            return "index";
+            return "redirect:login";
         }
         if(!results.isEmpty()){
             modelMap.put("error", "Invalid UserName / Password");
-            return "index";
+            return "redirect:login";
         }
         User user = results.get(0);
         if(!(password != user.getPassword())){
             modelMap.put("error", "Invalid UserName / Password");
-            return "index";
+            return "redirect:login";
         }
         modelMap.put("user", user);
-        return "balance"; //logged in successfully!
+        return "redirect:balance"; //logged in successfully!
     }
 }
