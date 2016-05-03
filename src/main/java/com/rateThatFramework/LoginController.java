@@ -42,6 +42,7 @@ public class LoginController {
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
+
         if(!results.isEmpty()){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";

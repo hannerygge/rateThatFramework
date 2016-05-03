@@ -11,12 +11,13 @@
     <title>LogIn</title>
 </head>
 <body>
+<h4>${param.message}</h4>
+<form:form action="login" method="post">
+    Enter User Name:<input type="text" name="username"> <br/>
+    Enter Password :<input type="password" name="password"/><br/>
+    <input type="submit" value="Log In">
 
-    <form:form action="checkUser" method="post" id="login">
-        <input name="username" placeholder="Username">
-        <password name="password">
-        <input type="submit" value="Log in">
-    </form:form>
+</form:form>
 
 </body>
 </html>

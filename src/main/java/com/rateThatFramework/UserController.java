@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
-@Controller("/registerNewUser")
+@Controller
 public class UserController {
 
 
-
+/*
     @RequestMapping(method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "/home";
-    }
+    }*/
 
 
     @RequestMapping(method = RequestMethod.POST)

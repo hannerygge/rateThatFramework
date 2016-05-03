@@ -26,17 +26,22 @@
 
     <bean name="HomeController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />
+          p:viewName="home" />
 
     <bean name="LoginController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />
+          p:viewName="login" />
+
+    <bean name="UserController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="user" />
 
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     <property name="mappings">
         <props>
-            <prop key="index.htm">HomeController</prop>
-            <prop key="login.htm">LoginController</prop>
+            <prop key="home.jsp">HomeController</prop>
+            <prop key="login.jsp">LoginController</prop>
+            <prop key="user.jsp">UserController</prop>
         </props>
     </property>
 </bean>
