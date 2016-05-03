@@ -1,5 +1,6 @@
 package com.rateThatFramework;
 
+import com.rateThatFramework.model.Framework;
 import com.rateThatFramework.model.User;
 import com.rateThatFramework.utils.HibernateUtil;
 import org.apache.commons.logging.Log;
@@ -52,6 +53,15 @@ public class DBHandler implements ApplicationContextAware {
         tx.commit();
         session.close();
 
+
+    }
+
+    public void insertFrameworkQuery(Framework framework){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(framework);
+        tx.commit();
+        session.close();
 
     }
 

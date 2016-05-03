@@ -29,6 +29,14 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping( value = "/registerNewUser", method = RequestMethod.GET)
+    public String newUser(ModelMap modelMap) {
+        modelMap.put("info", "Hello User");
+        return "registerNewUser";
+    }
+
+
+
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("LoginUser") @Valid LoginUser input) {
         String username = input.getUsername();
