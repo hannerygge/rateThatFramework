@@ -1,6 +1,7 @@
 package com.rateThatFramework;
 
 import com.rateThatFramework.utils.HibernateUtil;
+import org.apache.commons.logging.Log;
 import org.hibernate.*;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -18,6 +19,7 @@ public class DBHandler implements ApplicationContextAware {
     }
 
     public List Query(String input, Class expect) {
+        System.out.println("input = " + input);
         List results = null;
         Session session = HibernateUtil.getSessionFactory().openSession();;
         Transaction tx = null;
@@ -26,8 +28,10 @@ public class DBHandler implements ApplicationContextAware {
             SQLQuery query = session.createSQLQuery(input);
             query.addEntity(expect);
             results = query.list();
+            System.out.println(results);
             tx.commit();
         } catch (Exception e) {
+            System.out.println("EXCEPTION! " + e.getMessage());
             if (tx != null) tx.rollback();
             e.printStackTrace();
 
@@ -38,15 +42,8 @@ public class DBHandler implements ApplicationContextAware {
         return results;
     }
 
-    public void insertQuery(String input ){
-        SessionFactory sessionFact = (SessionFactory) context.getBean("sessionFactory");
-        Session session = sessionFact.openSession();
+    public void insertQuery(Query input){
 
-
-
-            Query query = session.createQuery(input);
-
-            query.executeUpdate();
 
 
 

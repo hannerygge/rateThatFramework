@@ -40,23 +40,25 @@ public class LoginController {
         //check username/password in db
 
         //find user in db
-     //   String query = "SELECT * FROM USERS WHERE name = '" + username + "'";
-       // results = db.Query(query, User.class);
-
+        String query = "SELECT * FROM user WHERE email = '" + username + "'";
+        results = db.Query(query, User.class);
+/*
         Query query = session.createQuery("from User where username = :username");
-        //query.setParameter("username", User);
+        query.setParameter("username", input.getUsername(q));
+*/
+        //db.Query(query);
 
         if(results == null){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
 
-        if(!results.isEmpty()){
+        if(results.isEmpty()){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
         User user = results.get(0);
-        if(!(password == user.getPassword())){
+        if(!(password.equals(user.getPassword()))){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
