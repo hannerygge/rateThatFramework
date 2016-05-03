@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by hanne_000 on 03.05.2016.
  */
-public class RatingDAOImpl {
+public class RatingDAOImpl implements RatingDAO{
     private SessionFactory sessionFactory;
 
     public RatingDAOImpl(SessionFactory sessionFactory) {
