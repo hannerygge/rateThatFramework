@@ -8,7 +8,7 @@
             <generator class="native"/>
         </id>
         <property name="name" column="name" />
-        <property name="email" column="email" />
         <property name="password" column="password" />
+        <property name="email" column="email" />
     </class>
 </hibernate-mapping>
