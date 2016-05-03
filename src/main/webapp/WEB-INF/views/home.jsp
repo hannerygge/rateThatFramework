@@ -54,8 +54,8 @@
         <c:forEach var="rating" items="${ratingList}" varStatus="status">
             <tr>
                 <td>${status.index + 1}</td>
-                <td>${rating.userID}</td>
-                <td>${rating.frameworkID}</td>
+                <td>${rating.user.name}</td>
+                <td>${rating.framework.name}</td>
                 <td>${rating.rating}</td>
 
             </tr>
@@ -72,8 +72,8 @@
         <c:forEach var="review" items="${reviewList}" varStatus="status">
             <tr>
                 <td>${status.index + 1}</td>
-                <td>${review.userID}</td>
-                <td>${review.frameworkID}</td>
+                <td>${review.user.name}</td>
+                <td>${review.framework.name}</td>
                 <td>${review.review}</td>
 
             </tr>

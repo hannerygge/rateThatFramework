@@ -3,6 +3,7 @@ package com.rateThatFramework;
 
 import com.rateThatFramework.dao.*;
 import com.rateThatFramework.model.*;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class HomeController {
     @RequestMapping(value="/")
     public ModelAndView home() {
         ModelAndView model = new ModelAndView("home");
+
 
         List<User> listUsers = userDao.list();
         model.addObject("userList", listUsers);

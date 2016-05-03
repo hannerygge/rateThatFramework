@@ -7,8 +7,8 @@
         <id name="id" column="ID">
             <generator class="native"/>
         </id>
-        <property name="user" column="userID" />
-        <property name="framework" column="frameworkID" />
+        <many-to-one name="user" column="userID" lazy="false"/>
+        <many-to-one name="framework" column="frameworkID" lazy="false" />
         <property name="review" column="review" />
     </class>
 </hibernate-mapping>
