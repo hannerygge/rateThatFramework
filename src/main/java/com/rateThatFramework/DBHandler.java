@@ -1,10 +1,7 @@
 package com.rateThatFramework;
 
 import com.rateThatFramework.model.User;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -38,5 +35,19 @@ public class DBHandler {
             session.close();
         }
         return results;
+    }
+
+    public void insertQuery(String input ){
+        SessionFactory sessionFact = (SessionFactory) context.getBean("sessionFactory");
+        Session session = sessionFact.openSession();
+
+
+
+            Query query = session.createQuery(input);
+
+            query.executeUpdate();
+
+
+
     }
 }
