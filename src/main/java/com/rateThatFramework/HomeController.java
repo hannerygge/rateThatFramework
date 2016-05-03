@@ -25,6 +25,7 @@ public class HomeController {
     @Autowired
     private RatingDAO ratingDao;
 
+
     @RequestMapping(value="/")
     public ModelAndView home() {
         ModelAndView model = new ModelAndView("home");

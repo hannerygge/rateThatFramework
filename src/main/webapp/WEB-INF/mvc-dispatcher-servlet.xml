@@ -46,7 +46,7 @@
     <constructor-arg>
         <ref bean="sessionFactory" />
     </constructor-arg>
-</bean>
+    </bean>
     <bean id="frameDao" class="com.rateThatFramework.dao.FrameworkDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory" />
@@ -57,7 +57,8 @@
             <ref bean="sessionFactory" />
         </constructor-arg>
     </bean>
-    <bean id="ratingDao" class="com.rateThatFramework.dao.RatingDAOImpl">
+
+    <bean id="ratingDAO" class="com.rateThatFramework.dao.RatingDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory" />
         </constructor-arg>
