@@ -27,7 +27,7 @@ public class HomeController {
     private RatingDAO ratingDao;
 
 
-    @RequestMapping(value="/")
+    @RequestMapping(value = "/home")
     public ModelAndView home() {
         ModelAndView model = new ModelAndView("home");
 
