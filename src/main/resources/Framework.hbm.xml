@@ -3,12 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.rateThatFramework.model">
-    <class name="com.rateThatFramework.model.User" table="user">
+    <class name="com.rateThatFramework.model.Framework" table="framework">
         <id name="id" column="ID">
             <generator class="native"/>
         </id>
         <property name="name" column="name" />
-        <property name="email" column="email" />
-        <property name="password" column="password" />
+        <property name="description" column="description" />
+        <property name="websiteLink" column="websiteLink" />
     </class>
+
 </hibernate-mapping>
