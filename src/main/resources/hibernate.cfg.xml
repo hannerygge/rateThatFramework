@@ -7,7 +7,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost/usersdb
+            jdbc:mysql://localhost/rateThatFramework
         </property>
         <property name="hibernate.connection.username">
             root
