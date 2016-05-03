@@ -17,7 +17,7 @@ import org.hibernate.*;
 public class LoginController {
     private  DBHandler db = new DBHandler();
 
-    @RequestMapping(value = {"/"})
+    @RequestMapping(value = {"/login"})
     public String returnMyView(){
         return "redirect:index.jsp";
     }
