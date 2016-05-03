@@ -10,9 +10,9 @@
 </head>
 <body>
 <div align="center">
-    <h1>Contact List</h1>
+    <h1>User List</h1>
     <table border="1">
-        <th>No</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
 
@@ -21,6 +21,60 @@
                 <td>${status.index + 1}</td>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
+
+            </tr>
+        </c:forEach>
+    </table>
+
+    <h1>Framework List</h1>
+    <table border="1">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Website Link</th>
+
+        <c:forEach var="framework" items="${frameworkList}" varStatus="status">
+            <tr>
+                <td>${status.index + 1}</td>
+                <td>${framework.name}</td>
+                <td>${framework.description}</td>
+                <td>${framework.websiteLink}</td>
+
+            </tr>
+        </c:forEach>
+    </table>
+
+    <h1>Rating List</h1>
+    <table border="1">
+        <th>ID</th>
+        <th>UserID</th>
+        <th>FrameworkID</th>
+        <th>Rating</th>
+
+        <c:forEach var="rating" items="${ratingList}" varStatus="status">
+            <tr>
+                <td>${status.index + 1}</td>
+                <td>${rating.userID}</td>
+                <td>${rating.frameworkID}</td>
+                <td>${rating.rating}</td>
+
+            </tr>
+        </c:forEach>
+    </table>
+
+    <h1>Review List</h1>
+    <table border="1">
+        <th>ID</th>
+        <th>UserID</th>
+        <th>FrameworkID</th>
+        <th>Review</th>
+
+        <c:forEach var="review" items="${reviewList}" varStatus="status">
+            <tr>
+                <td>${status.index + 1}</td>
+                <td>${review.userID}</td>
+                <td>${review.frameworkID}</td>
+                <td>${review.review}</td>
 
             </tr>
         </c:forEach>
