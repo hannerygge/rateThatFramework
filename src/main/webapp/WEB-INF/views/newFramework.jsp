@@ -8,16 +8,19 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>LogIn</title>
+
+    <title>Register a new framework</title>
 </head>
 <body>
 
 
-    <form:form action="checkUser" method="post" id="login">
-        <input name="username" placeholder="Username">
-        <password name="password">
-        <input type="submit" value="Log in">
+    <form:form action="createFramework" method="post" id="createFramework">
+        <input name="name" placeholder="Name">
+        <input name="description" placeholder="Description">
+        <input name="websiteLink" placeholder="Website Link">
+        <input type="submit" value="Register new framework">
     </form:form>
+
 
 </body>
 </html>
