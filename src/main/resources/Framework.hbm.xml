@@ -7,8 +7,8 @@
         <id name="id" column="ID">
             <generator class="native"/>
         </id>
-        <property name="name" column="name" />
-        <property name="description" column="description" />
+        <property name="name" column="Name" />
+        <property name="description" column="Description" />
         <property name="websiteLink" column="websiteLink" />
     </class>
 
