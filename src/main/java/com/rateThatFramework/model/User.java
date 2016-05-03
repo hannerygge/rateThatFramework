@@ -8,6 +8,15 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private int admin;
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
 
     public int getId() {
         return id;

@@ -2,16 +2,20 @@ package com.rateThatFramework;
 
 
 import com.rateThatFramework.model.*;
+import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
+import java.util.List;
+import org.hibernate.*;
 
 
 @Controller
 public class LoginController {
+    private  DBHandler db = new DBHandler();
 
     @RequestMapping(value = {"/"})
     public String returnMyView(){
@@ -25,15 +29,26 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(ModelMap modelMap, @ModelAttribute("user") @Valid User input) {
+    public String submit(ModelMap modelMap, @ModelAttribute("user") @Valid LoginUser input) {
+        String username = input.getUsername();
         String password = input.getPassword();
-        if (password != null && password.equals("password")) {
-            modelMap.put("userInfo", input.getEmail());
-            return "balance";
-        } else {
+        List<User> results = null;
+
+        //check username/password in db
+
+        //find user in db
+        String query = "SELECT * FROM USERS WHERE name = " + username;
+        db.Query(query, User.class);
+        if(!results.isEmpty()){
             modelMap.put("error", "Invalid UserName / Password");
             return "index";
         }
-
+        User user = results.get(0);
+        if(!(password != user.getPassword())){
+            modelMap.put("error", "Invalid UserName / Password");
+            return "index";
+        }
+        modelMap.put("user", user);
+        return "balance"; //logged in successfully!
     }
 }

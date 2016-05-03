@@ -65,6 +65,11 @@
     </bean>
 
     <bean id="validator"
-          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
+    />
+
+    <bean id="applicationContextProvder"
+          class="com.rateThatFramework.ApplicationContextProvider"/>
+
 
 </beans>
