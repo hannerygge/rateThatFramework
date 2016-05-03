@@ -45,7 +45,6 @@ public class CreateUser {
 
         db.insertQuery(query);
 
-
         return "complete";
     }
 
