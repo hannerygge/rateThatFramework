@@ -18,8 +18,11 @@ public class HomeController {
 
     @Autowired
     private UserDAO userDao;
+    @Autowired
     private FrameworkDAO frameDao;
+    @Autowired
     private ReviewDAO reviewDao;
+    @Autowired
     private RatingDAO ratingDao;
 
     @RequestMapping(value="/")

@@ -43,6 +43,21 @@
     </bean>
 
     <bean id="userDao" class="com.rateThatFramework.dao.UserDAOImpl">
+    <constructor-arg>
+        <ref bean="sessionFactory" />
+    </constructor-arg>
+</bean>
+    <bean id="frameDao" class="com.rateThatFramework.dao.FrameworkDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
+    </bean>
+    <bean id="reviewDao" class="com.rateThatFramework.dao.ReviewDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
+    </bean>
+    <bean id="ratingDao" class="com.rateThatFramework.dao.RatingDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory" />
         </constructor-arg>
