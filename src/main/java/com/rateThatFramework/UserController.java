@@ -26,20 +26,25 @@ public class UserController {
 
     @RequestMapping(value="/user", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("user") @Valid User user) {
-
-        String name = user.getName();
+        DBHandler db = new DBHandler();
+       /* String name = user.getName();
         String email = user.getEmail();
         String password = user.getPassword();
-        int admin = user.getAdmin();
+*/
+       // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
 
-        String insertQuery = "insert into user(name, password, email, admin) values('" + name + "', '" + password + "', '" + email + "', " + admin + ")";
+       // System.out.println(insertQuery);
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        db.insertQuery(user);
+
+       /* Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery(insertQuery);
+*/
+        //int rows = query.executeUpdate();
 
-        int rows = query.executeUpdate();
 
-        if (rows > 0) {
+
+        if (1 > 0) {
             modelMap.put("","Successfully added user :D" );
             return "true";
         }
