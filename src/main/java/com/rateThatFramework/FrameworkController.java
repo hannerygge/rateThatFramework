@@ -43,10 +43,10 @@ public class FrameworkController {
 
         if (1 > 0) {
             modelMap.put("", "Successfully added user :D");
-            return "noe";
+            return "home";
         } else {
             modelMap.put("", "You failed!");
-            return "noeAnnet";
+            return "/";
 
         }
 
