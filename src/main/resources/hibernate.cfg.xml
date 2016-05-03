@@ -13,7 +13,7 @@
             root
         </property>
         <property name="hibernate.connection.password">
-            Thankful3
+
         </property>
         <mapping resource="User.hbm.xml"/>
         <mapping resource="Framework.hbm.xml"/>
