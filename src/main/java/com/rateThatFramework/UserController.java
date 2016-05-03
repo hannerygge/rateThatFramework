@@ -23,6 +23,12 @@ public class UserController {
         return "registerNewUser";
     }
 
+    @RequestMapping(value="/user/edit", method = RequestMethod.GET)
+    public String edit(ModelMap modelMap) {
+        modelMap.put("info", "Hello User");
+        return "edit";
+    }
+
 
     @RequestMapping(value="/user", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("user") @Valid User user) {
@@ -31,9 +37,9 @@ public class UserController {
         String email = user.getEmail();
         String password = user.getPassword();
 */
-       // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
+        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
 
-       // System.out.println(insertQuery);
+        // System.out.println(insertQuery);
 
         db.insertQuery(user);
 
@@ -50,12 +56,76 @@ public class UserController {
         }
         else
         {
-            modelMap.put("", "You failed!");
+            modelMap.put("", "Could not register user!");
             return "false";
 
         }
 
     }
 
+    @RequestMapping(value="/user/edit/edit", method = RequestMethod.POST)
+    public String edit(ModelMap modelMap, @ModelAttribute("user") @Valid User user) {
+       /* String name = user.getName();
+        String email = user.getEmail();
+        String password = user.getPassword();
+*/
+        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
+        String editQuery = "";
+        // System.out.println(insertQuery);
+
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(editQuery);
+
+        int rows = query.executeUpdate();
+
+
+
+        if (rows > 0) {
+            modelMap.put("","Successfully updated user :D" );
+            return "true";
+        }
+        else
+        {
+            modelMap.put("", "Update failed!");
+            return "false";
+
+        }
+
+    }
+
+    @RequestMapping(value="/user/edit/delete", method = RequestMethod.POST)
+    public String delete(ModelMap modelMap, /*@ModelAttribute("user") @Valid User user*/ int deleteID) {
+        DBHandler db = new DBHandler();
+       /* String name = user.getName();
+        String email = user.getEmail();
+        String password = user.getPassword();
+*/
+        //int id = user.getId();
+        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
+        String deleteQuery = "DELETE FROM user WHERE ID = " + deleteID;
+        // System.out.println(insertQuery);
+
+        //db.insertQuery(user);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(deleteQuery);
+
+        int rows = query.executeUpdate();
+
+
+
+        if (rows > 0) {
+            modelMap.put("","Successfully deleted user" );
+            return "true";
+        }
+        else
+        {
+            modelMap.put("", "Could not delete user!");
+            return "false";
+
+        }
+
+    }
 
 }
