@@ -5,19 +5,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>LogIn</title>
+
+    <title>Register new rating</title>
 </head>
 <body>
 
 
-    <form:form action="checkUser" method="post" id="login">
-        <input name="username" placeholder="Username">
-        <password name="password">
-        <input type="submit" value="Log in">
-    </form:form>
+<form:form action="createRating" method="post" id="createRating">
+    <input name="rating" placeholder="Rating">
+    <input type="submit" value="Register rating">
+</form:form>
+
 
 </body>
 </html>
