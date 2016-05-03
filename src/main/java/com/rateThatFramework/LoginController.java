@@ -35,8 +35,8 @@ public class LoginController {
         //check username/password in db
 
         //find user in db
-        String query = "SELECT * FROM USERS WHERE name = " + username;
-        db.Query(query, User.class);
+        String query = "SELECT * FROM USERS WHERE name = '" + username + "'";
+        results = db.Query(query, User.class);
 
         if(results == null){
             modelMap.put("error", "Invalid UserName / Password");
