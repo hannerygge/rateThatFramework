@@ -1,8 +1,8 @@
 package com.rateThatFramework;
 
 
-import com.rateThatFramework.dao.UserDAO;
-import com.rateThatFramework.model.User;
+import com.rateThatFramework.dao.*;
+import com.rateThatFramework.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +18,25 @@ public class HomeController {
 
     @Autowired
     private UserDAO userDao;
+    private FrameworkDAO frameDao;
+    private ReviewDAO reviewDao;
+    private RatingDAO ratingDao;
 
     @RequestMapping(value="/")
     public ModelAndView home() {
-        List<User> listUsers = userDao.list();
         ModelAndView model = new ModelAndView("home");
+
+        List<User> listUsers = userDao.list();
         model.addObject("userList", listUsers);
+
+        List<Framework> listFramework = frameDao.list();
+        model.addObject("frameworkList", listFramework);
+
+        List<Rating> listRating = ratingDao.list();
+        model.addObject("ratingList", listRating);
+
+        List<Review> listReview = reviewDao.list();
+        model.addObject("reviewList", listReview);
         return model;
     }
 
