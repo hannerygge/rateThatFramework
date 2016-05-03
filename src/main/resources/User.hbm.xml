@@ -11,4 +11,28 @@
         <property name="email" column="email" />
         <property name="password" column="password" />
     </class>
+    <class name="com.rateThatFramework.model.Framework" table="framework">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" />
+        <property name="description" column="description" />
+        <property name="websiteLink" column="websiteLink" />
+    </class>
+    <class name="com.rateThatFramework.model.Rating" table="rating">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="framework" column="frameworkID" />
+        <property name="user" column="userID" />
+        <property name="rating" column="rating" />
+    </class>
+    <class name="com.rateThatFramework.model.Review" table="review">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="user" column="userID" />
+        <property name="framework" column="frameworkID" />
+        <property name="review" column="review" />
+    </class>
 </hibernate-mapping>

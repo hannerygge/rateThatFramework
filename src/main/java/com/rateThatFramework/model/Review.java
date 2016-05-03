@@ -3,7 +3,7 @@ package com.rateThatFramework.model;
 /**
  * Created by Andre on 26.04.2016.
  */
-public class Reviews {
+public class Review {
     private int id;
 
     public int getId() {
