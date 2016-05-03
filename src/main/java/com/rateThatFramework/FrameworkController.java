@@ -1,8 +1,6 @@
 package com.rateThatFramework;
 
 import com.rateThatFramework.model.Framework;
-import com.rateThatFramework.model.User;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
