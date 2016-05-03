@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
     <form:form action="checkUser" method="post" id="login">
         <input name="username" placeholder="Username">
         <password name="password">
