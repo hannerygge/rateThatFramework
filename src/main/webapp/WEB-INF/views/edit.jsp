@@ -56,21 +56,32 @@
     <th>Admin Access</th>
     <th>Edit Admin Access</th>
 
-    <c:forEach var="user" items="${userList}" varStatus="status">
-        <tr>
-            <td>${status.index + 1}</td>
-            <td>${user.name}</td>
-            <td><input id="editUsername" placeholder="Edit Username"></td>
-            <td>${user.email}</td>
-            <td><input id="editEmail" placeholder="Edit E-mail"></td>
-            <td>${user.admin}</td>
-            <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
 
-            <input type="submit" id="editUserButton" value="Register changes">
-            <input type="submit" id="deleteUser" value="Delete User">
+        <c:forEach var="user" items="${userList}" varStatus="status">
+            <tr>
+                <td>${status.index + 1}</td>
+                <td>${user.name}</td>
+                <td><input id="editUsername" placeholder="Edit Username"></td>
+                <td>${user.email}</td>
+                <td><input id="editEmail" placeholder="Edit E-mail"></td>
+                <td>${user.admin}</td>
+                <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
 
-        </tr>
-    </c:forEach>
+                <form:form action="edit" method="post">
+                    <input type="hidden" value="${status.index + 1}" id="editID">
+
+                    <input type="submit" id="editUserButton" value="Register changes">
+                </form:form>
+
+                <form:form action="delete" method="post">
+
+                    <input type="hidden" value="${status.index + 1}" id="deleteID">
+
+                    <input type="submit" id="deleteUser" value="Delete User">
+                </form:form>
+            </tr>
+        </c:forEach>
+
 
 </table>
 
