@@ -32,8 +32,22 @@
             <td>${framework.websiteLink}</td>
             <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
 
-           <td> <input type="submit" id="editFrameworkButton" value="Register changes"></td>
-           <td><input type="submit" id="deleteFramework" value="Delete Framework"></td>
+
+            <form:form action="edit/update" method="post">
+                <input type="hidden" value="${framework}">
+
+                <td><input type="submit" id="editFrameworkButton" value="Register changes"></td>
+            </form:form>
+
+            <form:form action="edit/delete" method="post" modelAttribute="Framework">
+
+                <td><form:hidden path="id" value="${framework.id}"/>
+
+                    <input type="submit" id="deleteFrameworkButton" value="Delete Framework"></td>
+            </form:form>
+
+
+
 
         </tr>
     </c:forEach>

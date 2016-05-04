@@ -1,19 +1,44 @@
 package com.rateThatFramework;
 
+import com.rateThatFramework.dao.FrameworkDAO;
+import com.rateThatFramework.dao.RatingDAO;
+import com.rateThatFramework.dao.ReviewDAO;
+import com.rateThatFramework.dao.UserDAO;
 import com.rateThatFramework.model.Framework;
+import com.rateThatFramework.model.Rating;
+import com.rateThatFramework.model.Review;
+import com.rateThatFramework.model.User;
+import com.rateThatFramework.utils.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by hanne_000 on 03.05.2016.
  */
 @Controller
 public class FrameworkController {
+
+    @Autowired
+    private UserDAO userDao;
+    @Autowired
+    private FrameworkDAO frameDao;
+    @Autowired
+    private ReviewDAO reviewDao;
+    @Autowired
+    private RatingDAO ratingDao;
+
+
 
     @RequestMapping(value="/framework", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
@@ -22,31 +47,97 @@ public class FrameworkController {
     }
 
 
+    @RequestMapping(value="/framework/edit", method = RequestMethod.GET)
+    public ModelAndView edit(ModelMap modelMap) {
+        ModelAndView model = new ModelAndView("edit");
+
+
+        List<User> listUsers = userDao.list();
+        model.addObject("userList", listUsers);
+
+        List<Framework> listFramework = frameDao.list();
+        model.addObject("frameworkList", listFramework);
+
+        List<Rating> listRating = ratingDao.list();
+        model.addObject("ratingList", listRating);
+
+        List<Review> listReview = reviewDao.list();
+        model.addObject("reviewList", listReview);
+        return model;
+    }
+
+
+
     @RequestMapping(value="/framework", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework framework) {
         DBHandler db = new DBHandler();
-       /* String name = user.getName();
-        String email = user.getEmail();
-        String password = user.getPassword();
-*/
-        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
 
-        // System.out.println(insertQuery);
-
-        db.insertFrameworkQuery(framework);
-
-       /* Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery(insertQuery);
-*/
-        //int rows = query.executeUpdate();
-
+       db.insertFrameworkQuery(framework);
 
         if (1 > 0) {
-            modelMap.put("", "Successfully added user :D");
-            return "home";
-        } else {
-            modelMap.put("", "You failed!");
-            return "/";
+            modelMap.put("","Successfully added user :D" );
+            return "addtrueframework";
+        }
+        else
+        {
+            modelMap.put("", "Could not register user!");
+            return "addfalse";
+
+        }
+
+    }
+
+    @RequestMapping(value="/framework/edit/update", method = RequestMethod.POST)
+    public String update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
+        System.out.println("UPDATE");
+
+      String editQuery = "";
+
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(editQuery);
+
+        int rows = query.executeUpdate();
+
+
+
+        if (rows > 0) {
+            modelMap.put("","Successfully updated user :D" );
+            return "updatetrueframework";
+        }
+        else
+        {
+            modelMap.put("", "Update failed!");
+            return "updatefalse";
+
+        }
+
+    }
+
+
+
+    @ModelAttribute("Framework")
+        public Framework createNewFramework(){
+            return new Framework();
+        }
+        @RequestMapping(value="/framework/edit/delete", method = RequestMethod.POST)
+        public String delete(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework input, BindingResult result) {
+            System.out.println("DELETE");
+            System.out.println(input);
+            System.out.println(input.getId());
+
+            DBHandler db = new DBHandler();
+
+        boolean rows = db.deleteById(Framework.class, input.getId());
+
+        if (rows) {
+            //modelMap.put("","Successfully deleted user" );
+            return "deletetrue";
+        }
+        else
+        {
+            //modelMap.put("", "Could not delete user!");
+            return "deletefalse";
 
         }
 

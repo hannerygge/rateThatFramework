@@ -78,7 +78,7 @@ public class UserController {
 
         if (1 > 0) {
             modelMap.put("","Successfully added user :D" );
-            return "addtrue";
+            return "addtrueuser";
         }
         else
         {
