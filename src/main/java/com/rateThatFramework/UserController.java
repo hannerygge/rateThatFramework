@@ -66,7 +66,7 @@ public class UserController {
 
 
     @RequestMapping(value= "/user", method = RequestMethod.POST)
-    public String submit(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
+    public ModelAndView submit(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
         DBHandler db = new DBHandler();
        /* String name = user.getName();
         String email = user.getEmail();
@@ -87,12 +87,12 @@ public class UserController {
 
         if (1 > 0) {
             modelMap.put("","Successfully added user :D" );
-            return "addtrueuser";
+            return test(modelMap);
         }
         else
         {
             modelMap.put("", "Could not register user!");
-            return "addfalse";
+            return test(modelMap);
 
         }
 
