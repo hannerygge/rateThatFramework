@@ -30,15 +30,17 @@ public class UserController {
 
 
 
-    @RequestMapping(value="/user", method = RequestMethod.GET)
+    @RequestMapping(value= "/newUser", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "registerNewUser";
     }
 
-    @RequestMapping(value="/user/edit", method = RequestMethod.GET)
-    public ModelAndView edit(ModelMap modelMap) {
-        ModelAndView model = new ModelAndView("edit");
+
+    @RequestMapping(value= "/user", method = RequestMethod.GET)
+    public ModelAndView test(ModelMap modelMap) {
+
+        ModelAndView model = new ModelAndView("user");
 
 
         List<User> listUsers = userDao.list();
@@ -53,10 +55,11 @@ public class UserController {
         List<Review> listReview = reviewDao.list();
         model.addObject("reviewList", listReview);
         return model;
+
     }
 
 
-    @RequestMapping(value="/user", method = RequestMethod.POST)
+    @RequestMapping(value= "/user", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
         DBHandler db = new DBHandler();
        /* String name = user.getName();
@@ -89,7 +92,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value="/user/edit/update", method = RequestMethod.POST)
+    @RequestMapping(value= "/update/user", method = RequestMethod.POST)
     public String update(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
         System.out.println("UPDATE");
        /* String name = user.getName();
@@ -121,12 +124,12 @@ public class UserController {
 
     }
 
-    @ModelAttribute("User")
+    @ModelAttribute("user")
     public User createNewUser(){
         return new User();
     }
-    @RequestMapping(value="/user/edit/delete", method = RequestMethod.POST)
-    public String delete(ModelMap modelMap, @ModelAttribute("User") @Valid User input, BindingResult result) {
+    @RequestMapping(value= "/delete/user", method = RequestMethod.POST)
+    public String deleteuser(ModelMap modelMap, @ModelAttribute("user") @Valid User input, BindingResult result) {
         System.out.println("DELETE");
         System.out.println(input);
         System.out.println(input.getId());

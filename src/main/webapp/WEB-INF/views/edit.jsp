@@ -33,21 +33,18 @@
             <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
 
 
-            <form:form action="edit/update" method="post">
+            <form:form action="/edit/framework/update" method="post">
                 <input type="hidden" value="${framework}">
 
-                <td><input type="submit" id="editFrameworkButton" value="Register changes"></td>
+                <td><input type="submit" value="Register changes"></td>
             </form:form>
 
-            <form:form action="edit/delete" method="post" modelAttribute="Framework">
+            <form:form action="/delete/framework" method="post" modelAttribute="framework">
 
                 <td><form:hidden path="id" value="${framework.id}"/>
 
-                    <input type="submit" id="deleteFrameworkButton" value="Delete Framework"></td>
+                    <input type="submit" value="Delete Framework"></td>
             </form:form>
-
-
-
 
         </tr>
     </c:forEach>
@@ -78,17 +75,17 @@
                 <td>${user.admin}</td>
                 <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
 
-                <form:form action="edit/update" method="post">
+                <form:form action="edit/user/update" method="post">
                     <input type="hidden" value="${user}">
 
-                    <td><input type="submit" id="editUserButton" value="Register changes"></td>
+                    <td><input type="submit" value="Register changes"></td>
                 </form:form>
 
-                <form:form action="edit/delete" method="post" modelAttribute="User">
+                <form:form action="/delete/user" method="post" modelAttribute="user">
 
-                    <td><form:hidden path="id" value="${user.id}"/>
+                    <td><!--form:hidden path="id" value="${user.id}"/-->
 
-                    <input type="submit" id="deleteUser" value="Delete User"></td>
+                    <input type="submit" value="Delete User"></td>
                 </form:form>
             </tr>
         </c:forEach>

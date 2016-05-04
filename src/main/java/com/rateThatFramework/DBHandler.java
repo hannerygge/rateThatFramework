@@ -3,11 +3,7 @@ package com.rateThatFramework;
 import com.rateThatFramework.model.Framework;
 import com.rateThatFramework.model.User;
 import com.rateThatFramework.utils.HibernateUtil;
-import org.apache.commons.logging.Log;
 import org.hibernate.*;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,12 +11,7 @@ import java.util.List;
 /**
  * Created by Andre on 03.05.2016.
  */
-public class DBHandler implements ApplicationContextAware {
-    private ApplicationContext context;
-
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
-    }
+public class DBHandler {
 
     public List Query(String input, Class expect) {
         System.out.println("input = " + input);

@@ -40,16 +40,18 @@ public class FrameworkController {
 
 
 
-    @RequestMapping(value="/framework", method = RequestMethod.GET)
+    @RequestMapping(value="/newFramework", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "newFramework";
     }
 
 
-    @RequestMapping(value="/framework/edit", method = RequestMethod.GET)
+
+    @RequestMapping(value="/framework", method = RequestMethod.GET)
     public ModelAndView edit(ModelMap modelMap) {
-        ModelAndView model = new ModelAndView("edit");
+
+        ModelAndView model = new ModelAndView("framework");
 
 
         List<User> listUsers = userDao.list();
@@ -68,8 +70,8 @@ public class FrameworkController {
 
 
 
-    @RequestMapping(value="/framework", method = RequestMethod.POST)
-    public String submit(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework framework) {
+    @RequestMapping(value="/newFrameWork", method = RequestMethod.POST)
+    public String submit(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
         DBHandler db = new DBHandler();
 
        db.insertFrameworkQuery(framework);
@@ -87,7 +89,7 @@ public class FrameworkController {
 
     }
 
-    @RequestMapping(value="/framework/edit/update", method = RequestMethod.POST)
+    @RequestMapping(value="/update/framework", method = RequestMethod.POST)
     public String update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
         System.out.println("UPDATE");
 
@@ -116,12 +118,12 @@ public class FrameworkController {
 
 
 
-    @ModelAttribute("Framework")
-        public Framework createNewFramework(){
-            return new Framework();
-        }
-        @RequestMapping(value="/framework/edit/delete", method = RequestMethod.POST)
-        public String delete(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework input, BindingResult result) {
+    @ModelAttribute("framework")
+    public Framework createNewFramework(){
+        return new Framework();
+    }
+    @RequestMapping(value="/delete/framework", method = RequestMethod.POST)
+    public String deleteframework(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework input, BindingResult result) {
             System.out.println("DELETE");
             System.out.println(input);
             System.out.println(input.getId());
