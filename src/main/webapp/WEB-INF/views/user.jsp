@@ -13,29 +13,25 @@
 
 <table border="1">
     <th>ID</th>
-    <th>Username</th>
     <th>Edit Username</th>
-    <th>E-mail</th>
     <th>Edit E-mail</th>
-    <th>Admin Access</th>
     <th>Edit Admin Access</th>
 
 
     <c:forEach var="user" items="${userList}" varStatus="status">
         <tr>
+
+            <form:form action="/edit/user/update" method="post" modelAttribute="user">
             <td>${status.index + 1}</td>
-            <td>${user.name}</td>
-            <td><input id="editUsername" placeholder="Edit Username"></td>
-            <td>${user.email}</td>
-            <td><input id="editEmail" placeholder="Edit E-mail"></td>
-            <td>${user.admin}</td>
-            <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
+            <td><input type= "text" name="name" placeholder=${user.name}></td>
+            <td><input type= "text" name="email" placeholder=${user.email}></td>
+            <td><input name="admin" placeholder=${user.admin}></td>
 
-            <form:form action="edit/user/update" method="post">
-                <input type="hidden" value="${user}">
 
-                <td><input type="submit" value="Register changes"></td>
-            </form:form>
+            <input type="hidden" value="${user}">
+
+            <td><input type="submit" value="Register changes"></td>
+        </form:form>
 
             <form:form action="/delete/user" method="post" modelAttribute="user">
 

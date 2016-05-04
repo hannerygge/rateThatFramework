@@ -98,19 +98,24 @@ public class UserController {
 
     }
 
-    @RequestMapping(value= "/update/user", method = RequestMethod.POST)
-    public String update(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
+    @RequestMapping(value= "/edit/user/update", method = RequestMethod.POST)
+    public ModelAndView update(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
         System.out.println("UPDATE");
-       /* String name = user.getName();
-        String email = user.getEmail();
-        String password = user.getPassword();
-*/
-        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
-        String editQuery = "";
+
+
+
+
+        System.out.println(user);
+        System.out.println(user.getName());
+        System.out.println(user.getEmail());
+
+
+        String editQuery = "update user set name = :";
         // System.out.println(insertQuery);
 
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery(editQuery);
 
         int rows = query.executeUpdate();
@@ -126,7 +131,24 @@ public class UserController {
             modelMap.put("", "Update failed!");
             return "updatefalse";
 
+        }*/
+
+
+        DBHandler db = new DBHandler();
+        boolean rows = true;//db.deleteById(User.class, user.getId());
+
+        if (rows) {
+            //modelMap.put("","Successfully deleted user" );
+            return test(modelMap);
         }
+        else
+        {
+            //modelMap.put("", "Could not delete user!");
+            //return "redirect:user";
+            return test(modelMap);
+        }
+
+
 
     }
 
@@ -134,6 +156,8 @@ public class UserController {
     public User createNewUser(){
         return new User();
     }
+
+
     @RequestMapping(value= "/delete/user", method = RequestMethod.POST)
     public ModelAndView deleteuser(ModelMap modelMap, @ModelAttribute("user") @Valid User input, BindingResult result) {
         System.out.println("DELETE");
