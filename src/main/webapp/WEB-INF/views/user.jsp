@@ -11,24 +11,38 @@
 </head>
 <body>
 
-<h1>Framework List</h1>
 <table border="1">
     <th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Website Link</th>
+    <th>Username</th>
+    <th>Edit Username</th>
+    <th>E-mail</th>
+    <th>Edit E-mail</th>
+    <th>Admin Access</th>
+    <th>Edit Admin Access</th>
+
 
     <c:forEach var="user" items="${userList}" varStatus="status">
         <tr>
             <td>${status.index + 1}</td>
             <td>${user.name}</td>
-            <td>${user.description}</td>
-            <td>${user.websiteLink}</td>
+            <td><input id="editUsername" placeholder="Edit Username"></td>
+            <td>${user.email}</td>
+            <td><input id="editEmail" placeholder="Edit E-mail"></td>
+            <td>${user.admin}</td>
+            <td><input id="editAdminAccess" placeholder="Edit Admin Access"></td>
 
-            <input type="submit" id="reviewButton" value="Review">
-            <input type="submit" id="rateButton" value="Rate">
+            <form:form action="edit/user/update" method="post">
+                <input type="hidden" value="${user}">
 
+                <td><input type="submit" value="Register changes"></td>
+            </form:form>
 
+            <form:form action="/delete/user" method="post" modelAttribute="user">
+
+                <td><form:hidden path="id" value="${user.id}"/>
+
+                    <input type="submit" value="Delete User"></td>
+            </form:form>
         </tr>
     </c:forEach>
 </table>

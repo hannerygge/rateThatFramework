@@ -70,7 +70,7 @@ public class FrameworkController {
 
 
 
-    @RequestMapping(value="/newFrameWork", method = RequestMethod.POST)
+    @RequestMapping(value="/framework", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
         DBHandler db = new DBHandler();
 

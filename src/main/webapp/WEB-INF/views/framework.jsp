@@ -15,22 +15,39 @@
 <table border="1">
     <th>ID</th>
     <th>Name</th>
+    <th>Edit Name</th>
     <th>Description</th>
+    <th>Edit Description</th>
     <th>Website Link</th>
+    <th>Edit Website Link</th>
 
     <c:forEach var="framework" items="${frameworkList}" varStatus="status">
         <tr>
             <td>${status.index + 1}</td>
             <td>${framework.name}</td>
+            <td><input id="editName" placeholder="Edit name"></td>
             <td>${framework.description}</td>
+            <td><input id="editDescription" placeholder="Edit description"></td>
             <td>${framework.websiteLink}</td>
+            <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
 
-            <input type="submit" id="reviewButton" value="Review">
-            <input type="submit" id="rateButton" value="Rate">
 
+            <form:form action="/edit/framework/update" method="post">
+                <input type="hidden" value="${framework}">
+
+                <td><input type="submit" value="Register changes"></td>
+            </form:form>
+
+            <form:form action="/delete/framework" method="post" modelAttribute="framework">
+
+                <td><form:hidden path="id" value="${framework.id}"/>
+
+                    <input type="submit" value="Delete Framework"></td>
+            </form:form>
 
         </tr>
     </c:forEach>
+
 </table>
 
 

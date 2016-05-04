@@ -14,7 +14,7 @@
 <body>
 
 
-    <form:form action="createFramework" method="post" id="createFramework">
+    <form:form action="framework" method="post">
         <input name="name" placeholder="Name">
         <input name="description" placeholder="Description">
         <input name="websiteLink" placeholder="Website Link">
