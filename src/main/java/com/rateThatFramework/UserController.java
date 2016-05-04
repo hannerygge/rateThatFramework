@@ -36,6 +36,12 @@ public class UserController {
         return "registerNewUser";
     }
 
+    @RequestMapping(value= "/editUser", method = RequestMethod.GET)
+    public String editUser(ModelMap modelMap) {
+        modelMap.put("info", "Hello User");
+        return "user";
+    }
+
 
     @RequestMapping(value= "/user", method = RequestMethod.GET)
     public ModelAndView test(ModelMap modelMap) {
@@ -129,7 +135,7 @@ public class UserController {
         return new User();
     }
     @RequestMapping(value= "/delete/user", method = RequestMethod.POST)
-    public String deleteuser(ModelMap modelMap, @ModelAttribute("user") @Valid User input, BindingResult result) {
+    public ModelAndView deleteuser(ModelMap modelMap, @ModelAttribute("user") @Valid User input, BindingResult result) {
         System.out.println("DELETE");
         System.out.println(input);
         System.out.println(input.getId());
@@ -160,13 +166,13 @@ public class UserController {
 
         if (rows) {
             //modelMap.put("","Successfully deleted user" );
-            return "deletetrue";
+            return test(modelMap);
         }
         else
         {
             //modelMap.put("", "Could not delete user!");
-            return "deletefalse";
-
+            //return "redirect:user";
+            return test(modelMap);
         }
 
     }

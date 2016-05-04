@@ -23,7 +23,7 @@ public class LoginController {
         return "redirect:index.jsp";
     }*/
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping( method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "login";

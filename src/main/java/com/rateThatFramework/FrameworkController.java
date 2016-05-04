@@ -46,6 +46,12 @@ public class FrameworkController {
         return "newFramework";
     }
 
+    @RequestMapping(value="/editFramework", method = RequestMethod.GET)
+    public String editUser(ModelMap modelMap) {
+        modelMap.put("info", "Hello User");
+        return "framework";
+    }
+
 
 
     @RequestMapping(value="/framework", method = RequestMethod.GET)
@@ -134,12 +140,12 @@ public class FrameworkController {
 
         if (rows) {
             //modelMap.put("","Successfully deleted user" );
-            return "deletetrue";
+            return "framework";
         }
         else
         {
             //modelMap.put("", "Could not delete user!");
-            return "deletefalse";
+            return "framework";
 
         }
 

@@ -83,8 +83,14 @@
 
     <br>
 
-    <form:form action="user/edit" method="get">
-        <input type="submit" id="goToEditButton" value="Edit">
+    <form:form action="user" method="get">
+        <input type="submit" id="goToEditButton" value="Edit User">
+    </form:form>
+
+    <br>
+
+    <form:form action="framework" method="get">
+        <input type="submit" id="goToEditButton" value="Edit Framework">
     </form:form>
 </div>
 </body>
