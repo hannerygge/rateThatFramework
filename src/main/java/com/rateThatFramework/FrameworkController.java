@@ -42,15 +42,15 @@ public class FrameworkController {
 
 
     @RequestMapping(value="/newFramework", method = RequestMethod.GET)
-    public ModelAndView init(ModelMap modelMap) {
+    public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
-        return edit(modelMap);
+        return "newFramework";
     }
 
     @RequestMapping(value="/editFramework", method = RequestMethod.GET)
-    public ModelAndView editUser(ModelMap modelMap) {
+    public String editUser(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
-        return edit(modelMap);
+        return "framework";
     }
 
 
