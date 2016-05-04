@@ -32,7 +32,7 @@
             <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
 
 
-            <form:form action="/edit/framework/update" method="post">
+            <form:form action="/update/framework" method="post">
                 <input type="hidden" value="${framework}">
 
                 <td><input type="submit" value="Register changes"></td>

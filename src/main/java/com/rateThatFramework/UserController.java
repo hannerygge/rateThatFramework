@@ -30,7 +30,7 @@ public class UserController {
 
 
 
-    @RequestMapping(value= "/newUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/newUser", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "registerNewUser";
@@ -43,7 +43,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value= "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView test(ModelMap modelMap) {
 
         ModelAndView model = new ModelAndView("user");
@@ -98,13 +98,9 @@ public class UserController {
 
     }
 
-    @RequestMapping(value= "/edit/user/update", method = RequestMethod.POST)
+    @RequestMapping(value= "/user/update", method = RequestMethod.POST)
     public ModelAndView update(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
         System.out.println("UPDATE");
-
-
-
-
         System.out.println(user);
         System.out.println(user.getName());
         System.out.println(user.getEmail());

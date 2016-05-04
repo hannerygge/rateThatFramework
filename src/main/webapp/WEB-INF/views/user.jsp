@@ -21,14 +21,13 @@
     <c:forEach var="user" items="${userList}" varStatus="status">
         <tr>
 
-            <form:form action="/edit/user/update" method="post" modelAttribute="user">
-            <td>${status.index + 1}</td>
-            <td><input type= "text" name="name" placeholder=${user.name}></td>
-            <td><input type= "text" name="email" placeholder=${user.email}></td>
-            <td><input name="admin" placeholder=${user.admin}></td>
+            <form:form action="/user/update" method="post" modelAttribute="user">
+                <td>${status.index + 1}</td>
+                <input type= "text" name="name" placeholder="${user.name}" value="${user.name}">
+                <td><input type= "text" name="email" placeholder="${user.email}" value="${user.email}"></td>
+                <td><input name="admin" placeholder="${user.admin}" value="${user.admin}"></td>
 
-
-            <input type="hidden" value="${user}">
+                <td><input type="hidden" value=${user.id}></td>
 
             <td><input type="submit" value="Register changes"></td>
         </form:form>
