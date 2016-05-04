@@ -123,7 +123,6 @@ public class FrameworkController {
     }
 
 
-
     @ModelAttribute("framework")
     public Framework createNewFramework(){
         return new Framework();
