@@ -92,6 +92,18 @@
     <form:form action="framework" method="get">
         <input type="submit" id="goToEditButton" value="Edit Framework">
     </form:form>
+
+    <br>
+
+    <form:form action="registerNewUser" method="get">
+        <input type="submit" id="goToEditButton" value="Add User">
+    </form:form>
+
+    <br>
+
+    <form:form action="newFramework" method="get">
+        <input type="submit" id="goToEditButton" value="Add Framework">
+    </form:form>
 </div>
 </body>
 </html>
