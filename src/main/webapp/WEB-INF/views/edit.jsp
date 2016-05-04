@@ -32,8 +32,9 @@
             <td>${framework.websiteLink}</td>
             <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
 
-            <input type="submit" id="editFrameworkButton" value="Register changes">
-            <input type="submit" id="deleteFramework" value="Delete Framework">
+           <td> <input type="submit" id="editFrameworkButton" value="Register changes"></td>
+           <td><input type="submit" id="deleteFramework" value="Delete Framework"></td>
+
         </tr>
     </c:forEach>
 

@@ -2,6 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -79,6 +80,12 @@
             </tr>
         </c:forEach>
     </table>
+
+    <br>
+
+    <form:form action="user/edit" method="get">
+        <input type="submit" id="goToEditButton" value="Edit">
+    </form:form>
 </div>
 </body>
 </html>
