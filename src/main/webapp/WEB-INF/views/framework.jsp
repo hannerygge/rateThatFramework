@@ -43,8 +43,13 @@
         </tr>
     </c:forEach>
 
+
+
 </table>
 
+<form:form action="/home" method="get">
+    <input type="submit" id="goToHomeButton" value="Home">
+</form:form>
 
 </body>
 </html>

@@ -21,6 +21,9 @@
         <input type="submit" value="Register new framework">
     </form:form>
 
+    <form:form action="/home" method="get">
+        <input type="submit" id="goToHomeButton" value="Home">
+    </form:form>
 
 </body>
 </html>
