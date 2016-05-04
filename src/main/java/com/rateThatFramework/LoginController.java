@@ -71,6 +71,6 @@ public class LoginController {
             return "redirect:login";
         }
         modelMap.put("user", user);
-        return "redirect:balance"; //logged in successfully!
+        return "redirect:home"; //logged in successfully!
     }
 }
