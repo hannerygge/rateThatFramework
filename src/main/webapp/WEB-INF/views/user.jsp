@@ -24,10 +24,12 @@
             <form:form action="/user/update" method="post" modelAttribute="user">
                 <td>${status.index + 1}</td>
                 <td><input type= "text" name="name" placeholder="${user.name}" value="${user.name}"></td>
+
                 <td><input type= "text" name="email" placeholder="${user.email}" value="${user.email}"></td>
                 <td><input name="admin" placeholder="${user.admin}" value="${user.admin}"></td>
 
-                <td><input type="hidden" value=${user.id}></td>
+                <input type="hidden" name="id" value=${user.id}>
+                <input type="hidden" name="password" value="${user.password}">
 
             <td><input type="submit" value="Register changes"></td>
         </form:form>

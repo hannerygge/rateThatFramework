@@ -5,6 +5,7 @@ import com.rateThatFramework.model.User;
 import com.rateThatFramework.utils.HibernateUtil;
 import org.hibernate.*;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -85,4 +86,12 @@ public class DBHandler {
     }
 
 
+    public void updateFrameworkQuery(Framework framework){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(framework);
+        tx.commit();
+        session.close();
+
+    }
 }

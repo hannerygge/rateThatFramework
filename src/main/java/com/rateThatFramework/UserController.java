@@ -135,6 +135,7 @@ public class UserController {
 
         user.setId(input.getId());
         user.setName(input.getName());
+        user.setPassword(input.getPassword());
         user.setEmail(input.getEmail());
         user.setAdmin(input.getAdmin());
 

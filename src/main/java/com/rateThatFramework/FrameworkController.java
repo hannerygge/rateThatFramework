@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -96,28 +97,32 @@ public class FrameworkController {
     }
 
     @RequestMapping(value="/update/framework", method = RequestMethod.POST)
-    public ModelAndView update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
+    public ModelAndView update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework input) {
         System.out.println("UPDATE");
 
-      String editQuery = "";
 
+        Framework framework = new Framework();
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery(editQuery);
+        framework.setId(input.getId());
+        framework.setName(input.getName());
+        framework.setDescription(input.getDescription());
+        framework.setWebsiteLink(input.getWebsiteLink());
 
-        int rows = query.executeUpdate();
+        DBHandler db = new DBHandler();
 
+        db.updateFrameworkQuery(framework);
 
+        boolean rows = true;//db.deleteById(User.class, user.getId());
 
-        if (rows > 0) {
-            modelMap.put("", "Successfully updated user :D");
+        if (rows) {
+            //modelMap.put("","Successfully deleted user" );
             return edit(modelMap);
         }
         else
         {
-            modelMap.put("", "Update failed!");
+            //modelMap.put("", "Could not delete user!");
+            //return "redirect:user";
             return edit(modelMap);
-
         }
 
     }

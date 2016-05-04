@@ -14,26 +14,21 @@
 <h1>Framework List</h1>
 <table border="1">
     <th>ID</th>
-    <th>Name</th>
     <th>Edit Name</th>
-    <th>Description</th>
     <th>Edit Description</th>
-    <th>Website Link</th>
     <th>Edit Website Link</th>
 
     <c:forEach var="framework" items="${frameworkList}" varStatus="status">
         <tr>
-            <td>${status.index + 1}</td>
-            <td>${framework.name}</td>
-            <td><input id="editName" placeholder="Edit name"></td>
-            <td>${framework.description}</td>
-            <td><input id="editDescription" placeholder="Edit description"></td>
-            <td>${framework.websiteLink}</td>
-            <td><input id="editWebsiteLink" placeholder="Edit website link"></td>
-
-
             <form:form action="/update/framework" method="post">
-                <input type="hidden" value="${framework}">
+            <td>${status.index + 1}</td>
+
+            <td><input name="name" placeholder="${framework.name}" value="${framework.name}"></td>
+            <td><input name="description" placeholder="${framework.description}" value="${framework.description}"></td>
+            <td><input name="websiteLink" placeholder="${framework.websiteLink}" value="${framework.websiteLink}"></td>
+
+            <input type="hidden" name="id" value=${framework.id}>
+
 
                 <td><input type="submit" value="Register changes"></td>
             </form:form>
