@@ -42,15 +42,15 @@ public class FrameworkController {
 
 
     @RequestMapping(value="/newFramework", method = RequestMethod.GET)
-    public String init(ModelMap modelMap) {
+    public ModelAndView init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
-        return "newFramework";
+        return edit(modelMap);
     }
 
     @RequestMapping(value="/editFramework", method = RequestMethod.GET)
-    public String editUser(ModelMap modelMap) {
+    public ModelAndView editUser(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
-        return "framework";
+        return edit(modelMap);
     }
 
 
@@ -78,19 +78,19 @@ public class FrameworkController {
 
 
     @RequestMapping(value="/framework", method = RequestMethod.POST)
-    public String submit(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
+    public ModelAndView submit(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
         DBHandler db = new DBHandler();
 
        db.insertFrameworkQuery(framework);
 
         if (1 > 0) {
             modelMap.put("","Successfully added user :D" );
-            return "addtrueframework";
+            return edit(modelMap);
         }
         else
         {
             modelMap.put("", "Could not register user!");
-            return "addfalse";
+            return edit(modelMap);
 
         }
 
