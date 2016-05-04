@@ -1,5 +1,7 @@
 package com.rateThatFramework.model;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 /**
  * Created by hanne_000 on 26.04.2016.
  */

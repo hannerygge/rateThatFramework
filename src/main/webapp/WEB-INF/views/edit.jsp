@@ -69,9 +69,9 @@
                     <td><input type="submit" id="editUserButton" value="Register changes"></td>
                 </form:form>
 
-                <form:form action="edit/delete" method="post">
+                <form:form action="edit/delete" method="post" modelAttribute="User">
 
-                    <td><input type="hidden" value="${user}">
+                    <td><form:hidden path="id" value="${user.id}"/>
 
                     <input type="submit" id="deleteUser" value="Delete User"></td>
                 </form:form>

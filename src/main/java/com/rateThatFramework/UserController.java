@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -120,8 +121,12 @@ public class UserController {
 
     }
 
+    @ModelAttribute("User")
+    public User createNewUser(){
+        return new User();
+    }
     @RequestMapping(value="/user/edit/delete", method = RequestMethod.POST)
-    public String delete(ModelMap modelMap, @ModelAttribute("user") @Valid User input) {
+    public String delete(ModelMap modelMap, @ModelAttribute("User") @Valid User input, BindingResult result) {
         System.out.println("DELETE");
         System.out.println(input);
         System.out.println(input.getId());
