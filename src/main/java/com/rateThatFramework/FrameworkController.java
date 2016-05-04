@@ -128,8 +128,9 @@ public class FrameworkController {
     public Framework createNewFramework(){
         return new Framework();
     }
+
     @RequestMapping(value="/delete/framework", method = RequestMethod.POST)
-    public String deleteframework(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework input, BindingResult result) {
+    public ModelAndView deleteframework(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework input, BindingResult result) {
             System.out.println("DELETE");
             System.out.println(input);
             System.out.println(input.getId());
@@ -140,13 +141,12 @@ public class FrameworkController {
 
         if (rows) {
             //modelMap.put("","Successfully deleted user" );
-            return "framework";
+            return edit(modelMap);
         }
         else
         {
             //modelMap.put("", "Could not delete user!");
-            return "framework";
-
+            return edit(modelMap);
         }
 
     }
