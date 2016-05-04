@@ -75,27 +75,14 @@ public class DBHandler {
         return true;
     }
 
-    public boolean updateById(Class<?> type, Serializable id){
-
-        Session session = HibernateUtil.getSessionFactory().openSession();;
+    public void updateUserQuery(User user){
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        Object persistentInstance = session.load(type, id);
-        if (persistentInstance != null) {
-            session.update(persistentInstance);
-            System.out.println("update true!");
-
-        }
-        else
-        {
-            System.out.println("update FALSE!");
-            session.close();
-            return false;
-        }
+        session.update(user);
         tx.commit();
         session.close();
-        return true;
-
 
     }
+
 
 }

@@ -23,7 +23,7 @@
 
             <form:form action="/user/update" method="post" modelAttribute="user">
                 <td>${status.index + 1}</td>
-                <input type= "text" name="name" placeholder="${user.name}" value="${user.name}">
+                <td><input type= "text" name="name" placeholder="${user.name}" value="${user.name}"></td>
                 <td><input type= "text" name="email" placeholder="${user.email}" value="${user.email}"></td>
                 <td><input name="admin" placeholder="${user.admin}" value="${user.admin}"></td>
 

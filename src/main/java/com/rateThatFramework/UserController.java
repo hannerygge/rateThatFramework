@@ -99,14 +99,16 @@ public class UserController {
     }
 
     @RequestMapping(value= "/user/update", method = RequestMethod.POST)
-    public ModelAndView update(ModelMap modelMap, @ModelAttribute("User") @Valid User user) {
+    public ModelAndView update(ModelMap modelMap, @ModelAttribute("User") @Valid User input) {
         System.out.println("UPDATE");
-        System.out.println(user);
-        System.out.println(user.getName());
-        System.out.println(user.getEmail());
+        System.out.println(input);
+        System.out.println(input.getName());
+        System.out.println(input.getEmail());
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
 
-        String editQuery = "update user set name = :";
+
         // System.out.println(insertQuery);
 
 
@@ -129,8 +131,17 @@ public class UserController {
 
         }*/
 
+        User user = new User();
+
+        user.setId(input.getId());
+        user.setName(input.getName());
+        user.setEmail(input.getEmail());
+        user.setAdmin(input.getAdmin());
 
         DBHandler db = new DBHandler();
+
+        db.updateUserQuery(user);
+
         boolean rows = true;//db.deleteById(User.class, user.getId());
 
         if (rows) {
