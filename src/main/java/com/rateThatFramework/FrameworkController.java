@@ -96,7 +96,7 @@ public class FrameworkController {
     }
 
     @RequestMapping(value="/update/framework", method = RequestMethod.POST)
-    public String update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
+    public ModelAndView update(ModelMap modelMap, @ModelAttribute("Framework") @Valid Framework framework) {
         System.out.println("UPDATE");
 
       String editQuery = "";
@@ -110,13 +110,13 @@ public class FrameworkController {
 
 
         if (rows > 0) {
-            modelMap.put("","Successfully updated user :D" );
-            return "updatetrueframework";
+            modelMap.put("", "Successfully updated user :D");
+            return edit(modelMap);
         }
         else
         {
             modelMap.put("", "Update failed!");
-            return "updatefalse";
+            return edit(modelMap);
 
         }
 
