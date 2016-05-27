@@ -1,6 +1,8 @@
 package com.rateThatFramework;
 
 import com.rateThatFramework.model.Framework;
+import com.rateThatFramework.model.Rating;
+import com.rateThatFramework.model.Review;
 import com.rateThatFramework.model.User;
 import com.rateThatFramework.utils.HibernateUtil;
 import org.hibernate.*;
@@ -56,6 +58,26 @@ public class DBHandler {
         session.close();
 
     }
+
+    public void insertRatingQuery(Rating rating){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(rating);
+        tx.commit();
+        session.close();
+    }
+
+    public void insertReviewQuery(Review review){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(review);
+        tx.commit();
+        session.close();
+
+    }
+
+
+
 
     public boolean deleteById(Class<?> type, Serializable id) {
         Session session = HibernateUtil.getSessionFactory().openSession();;

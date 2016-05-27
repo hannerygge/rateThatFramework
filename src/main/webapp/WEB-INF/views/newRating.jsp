@@ -16,7 +16,9 @@
 
 
 <form:form action="createRating" method="post" id="createRating">
-    <input name="rating" placeholder="Rating">
+
+    <td><form:radiobuttons path="rating" items="${numberList}" />
+    </td>
     <input type="submit" value="Register rating">
 </form:form>
 
