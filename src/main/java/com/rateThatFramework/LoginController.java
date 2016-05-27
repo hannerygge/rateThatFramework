@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 public class LoginController {
-    private  DBHandler db = new DBHandler();
+    private BLL bll = new BLL();
 /*
     @RequestMapping(value = {"/login"})
     public String returnMyView(){
@@ -39,38 +39,17 @@ public class LoginController {
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public String submit(ModelMap modelMap, @ModelAttribute("LoginUser") @Valid LoginUser input) {
-        String username = input.getUsername();
-        String password = input.getPassword();
-        List<User> results = null;
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        User checkeduser = bll.userCheck(input);
 
-        //check username/password in db
-
-        //find user in db
-        String query = "SELECT * FROM user WHERE email = '" + username + "'";
-        results = db.Query(query, User.class);
-/*
-        Query query = session.createQuery("from User where username = :username");
-        query.setParameter("username", input.getUsername(q));
-*/
-        //db.Query(query);
-
-        if(results == null){
+        if(checkeduser == null){
             modelMap.put("error", "Invalid UserName / Password");
             return "redirect:login";
         }
+        else {
+            modelMap.addAttribute("user", checkeduser);
+            return "redirect:home";
+        }
 
-        if(results.isEmpty()){
-            modelMap.put("error", "Invalid UserName / Password");
-            return "redirect:login";
-        }
-        User user = results.get(0);
-        if(!(password.equals(user.getPassword()))){
-            modelMap.put("error", "Invalid UserName / Password");
-            return "redirect:login";
-        }
-        modelMap.put("user", user);
-        return "redirect:home"; //logged in successfully!
     }
 }

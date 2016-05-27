@@ -30,9 +30,9 @@ public class HomeController {
 
 
     @RequestMapping(value = "/home")
-    public ModelAndView home() {
+    public ModelAndView home(ModelMap input) {
         ModelAndView model = new ModelAndView("home");
-
+        model.addAllObjects(input);
 
         List<User> listUsers = userDao.list();
         model.addObject("userList", listUsers);
