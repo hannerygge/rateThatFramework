@@ -38,7 +38,7 @@ public class RatingController {
 
 
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/rating", method = RequestMethod.GET)
     public ModelAndView test(ModelMap modelMap) {
 
         ModelAndView model = new ModelAndView("newRating");

@@ -38,7 +38,15 @@ public class ReviewController {
 
 
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value="/newReview", method = RequestMethod.GET)
+    public String init(ModelMap modelMap) {
+        modelMap.put("info", "Hello User");
+        return "newReview";
+    }
+
+
+
+    @RequestMapping(value = "/review", method = RequestMethod.GET)
     public ModelAndView test(ModelMap modelMap) {
 
         ModelAndView model = new ModelAndView("newReview");
@@ -62,22 +70,28 @@ public class ReviewController {
     @RequestMapping(value= "/review", method = RequestMethod.POST)
     public ModelAndView submit(ModelMap modelMap, @ModelAttribute("Review") @Valid Review review) {
         DBHandler db = new DBHandler();
-       /* String name = user.getName();
-        String email = user.getEmail();
-        String password = user.getPassword();
-*/
-        // String insertQuery = "INSERT INTO user(name, password, email) VALUES('" + name + "', '" + password + "', '" + email + "')";
 
-        // System.out.println(insertQuery);
+        User user = new User();
+        Framework framework = new Framework();
+        Review r = new Review();
 
+        user.setId(12);
+        user.setAdmin(0);
+        user.setPassword("testig");
+        user.setEmail("testing");
+        user.setName("testing");
 
-        db.insertReviewQuery(review);
+        framework.setId(15);
+        framework.setName("test");
+        framework.setWebsiteLink("test");
+        framework.setDescription("test");
 
-       /* Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery(insertQuery);
-*/
-        //int rows = query.executeUpdate();
+        r.setUser(user);
+        r.setFramework(framework);
+        r.setId(review.getId());
+        r.setReview(review.getReview());
 
+        db.insertReviewQuery(r);
 
 
         if (1 > 0) {
@@ -93,4 +107,8 @@ public class ReviewController {
 
     }
 
+    @ModelAttribute("review")
+    public Review createNewRevire(){
+        return new Review();
+    }
 }

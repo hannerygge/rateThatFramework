@@ -15,7 +15,7 @@
 <body>
 
 
-    <form:form action="createReview" method="post" id="createReview">
+    <form:form action="review" method="post" id="review">
         <input name="review" placeholder="Review">
         <input type="submit" value="Register review">
     </form:form>

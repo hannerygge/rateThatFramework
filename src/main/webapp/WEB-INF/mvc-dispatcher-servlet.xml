@@ -41,11 +41,11 @@
 
     <bean name="RatingController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="framework" />
+          p:viewName="registerNewRating" />
 
     <bean name="ReviewController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="framework" />
+          p:viewName="registerNewReview" />
 
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
@@ -54,8 +54,8 @@
                 <prop key="login.jsp">LoginController</prop>
                 <prop key="framework.jsp">FrameworkController</prop>
                 <prop key="user.jsp">UserController</prop>
-                <prop key="rateReviewFramework.jsp">RatingController</prop>
-                <prop key="user.jsp">ReviewController</prop>
+                <prop key="newRating.jsp">RatingController</prop>
+                <prop key="newReview.jsp">ReviewController</prop>
             </props>
         </property>
     </bean>
