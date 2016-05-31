@@ -75,7 +75,7 @@ public class FrameworkController {
         model.addObject("reviewList", listReview);
         return model;
     }
-
+    int i = 1;
 
 
     @RequestMapping(value="/framework", method = RequestMethod.POST)
