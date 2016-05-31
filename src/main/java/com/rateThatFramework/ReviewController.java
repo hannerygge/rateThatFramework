@@ -75,16 +75,19 @@ public class ReviewController {
         Framework framework = new Framework();
         Review r = new Review();
 
-        user.setId(12);
-        user.setAdmin(0);
-        user.setPassword("testig");
-        user.setEmail("testing");
-        user.setName("testing");
 
-        framework.setId(15);
-        framework.setName("test");
-        framework.setWebsiteLink("test");
-        framework.setDescription("test");
+        user.setAdmin(0);
+        user.setPassword("testig1");
+        user.setEmail("testing1");
+        user.setName("testing1");
+
+        db.insertQuery(user);
+
+        framework.setName("test1");
+        framework.setWebsiteLink("test1");
+        framework.setDescription("test1");
+
+        db.insertFrameworkQuery(framework);
 
         r.setUser(user);
         r.setFramework(framework);
