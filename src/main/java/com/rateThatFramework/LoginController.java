@@ -54,10 +54,4 @@ public class LoginController {
 
 
     }
-
-    @RequestMapping(value="/logout", method = RequestMethod.POST)
-    public void logout(HttpSession session, ModelMap modelMap, @ModelAttribute("Loginuser") @Valid LoginUser input, RedirectAttributes redir) {
-        session.setAttribute("user", null);
-        return;
-    }
 }
