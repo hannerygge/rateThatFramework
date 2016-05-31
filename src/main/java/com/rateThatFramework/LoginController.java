@@ -54,7 +54,7 @@ public class LoginController {
             return "redirect:login";
         }
         else {
-            redir.addFlashAttribute("user", checkeduser);
+            //redir.addFlashAttribute("user", checkeduser);
             req.getSession().setAttribute("user", checkeduser);
             status.setComplete();
             return "redirect:home";
