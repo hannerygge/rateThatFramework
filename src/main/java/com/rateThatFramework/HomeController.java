@@ -32,7 +32,7 @@ public class HomeController {
     public ModelAndView home(ModelMap model) {
         //ModelAndView MAW = new ModelAndView("home", modelMap);
 
-        System.out.println("In homecontroller: " + model.get("user"));
+        //System.out.println("In homecontroller: " + model.get("user"));
 
         List<User> listUsers = userDao.list();
         model.addAttribute("userList", listUsers);

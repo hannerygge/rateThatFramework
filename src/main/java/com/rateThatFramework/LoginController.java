@@ -15,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -44,22 +45,28 @@ public class LoginController {
 
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    public String submit(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("Loginuser") @Valid LoginUser input, RedirectAttributes redir, SessionStatus status) {
+    public String submit(HttpSession session, ModelMap modelMap, @ModelAttribute("Loginuser") @Valid LoginUser input, RedirectAttributes redir) {
 
         User checkeduser = bll.userCheck(input);
         System.out.println("checkeduser is " + checkeduser);
         if(checkeduser == null){
             redir.addFlashAttribute("error", "Invalid UserName / Password");
-            status.setComplete();
+            //status.setComplete();
             return "redirect:login";
         }
         else {
             //redir.addFlashAttribute("user", checkeduser);
-            req.getSession().setAttribute("user", checkeduser);
-            status.setComplete();
+            session.setAttribute("user", checkeduser);
+            //status.setComplete();
             return "redirect:home";
         }
 
 
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.POST)
+    public void logout(HttpSession session, ModelMap modelMap, @ModelAttribute("Loginuser") @Valid LoginUser input, RedirectAttributes redir) {
+        session.setAttribute("user", null);
+        return;
     }
 }

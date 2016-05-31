@@ -11,7 +11,8 @@
     <title>Home</title>
 </head>
 <body>
-<%  User test = (User)request.getSession().getAttribute("user");//(User)request.getAttribute("user");
+<%  HttpSession session1 = request.getSession();
+    User test = (User)session1.getAttribute("user");//(User)request.getSession().getAttribute("user");//(User)request.getAttribute("user");
     System.out.println(test);
     if(test == null){
         %>
