@@ -157,21 +157,12 @@ public class FrameworkController {
      }
 
     @RequestMapping(value = "/review/framework", method = RequestMethod.POST)
-    public ModelAndView reviewFramework(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework input, RedirectAttributes redir ){
+    public String reviewFramework(@ModelAttribute("reviewframework") @Valid Framework input, RedirectAttributes redir ){
 
-        DBHandler db = new DBHandler();
 
-        boolean rows = db.deleteById(Framework.class, input.getId());
+            redir.addFlashAttribute("framework", input.getId());
+            return "redirect:/review";
 
-        if (rows) {
-            //modelMap.put("","Successfully deleted user" );
-            return edit(modelMap);
-        }
-        else
-        {
-            //modelMap.put("", "Could not delete user!");
-            return edit(modelMap);
-        }
 
     }
 

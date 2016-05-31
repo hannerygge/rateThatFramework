@@ -11,6 +11,7 @@ import com.rateThatFramework.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,12 +77,14 @@ public class ReviewController {
         Review r = new Review();
 
 
+
         user.setAdmin(0);
         user.setPassword("testig1");
-        user.setEmail("testing1");
+        user.setEmail("testinghjlvvr1");
         user.setName("testing1");
 
         db.insertQuery(user);
+
 
         framework.setName("test1");
         framework.setWebsiteLink("test1");
