@@ -10,11 +10,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
 
 @Controller
+@SessionAttributes("user")
 public class LoginController {
     private BLL bll = new BLL();
 /*
@@ -38,18 +44,22 @@ public class LoginController {
 
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    public String submit(ModelMap modelMap, @ModelAttribute("LoginUser") @Valid LoginUser input) {
+    public String submit(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("Loginuser") @Valid LoginUser input, RedirectAttributes redir, SessionStatus status) {
 
         User checkeduser = bll.userCheck(input);
-
+        System.out.println("checkeduser is " + checkeduser);
         if(checkeduser == null){
-            modelMap.put("error", "Invalid UserName / Password");
+            redir.addFlashAttribute("error", "Invalid UserName / Password");
+            status.setComplete();
             return "redirect:login";
         }
         else {
-            modelMap.addAttribute("user", checkeduser);
+            redir.addFlashAttribute("user", checkeduser);
+            req.getSession().setAttribute("user", checkeduser);
+            status.setComplete();
             return "redirect:home";
         }
+
 
     }
 }

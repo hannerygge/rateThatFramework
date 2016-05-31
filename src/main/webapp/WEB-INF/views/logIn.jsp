@@ -11,7 +11,7 @@
     <title>LogIn</title>
 </head>
 <body>
-<h4>${param.message}</h4>
+<h4>${param.error}</h4>
 <form:form action="login" method="post">
     Enter User Name:<input type="text" name="username"> <br/>
     Enter Password :<input type="password" name="password"/><br/>

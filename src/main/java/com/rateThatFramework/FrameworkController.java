@@ -58,7 +58,7 @@ public class FrameworkController {
     @RequestMapping(value="/framework", method = RequestMethod.GET)
     public ModelAndView edit(ModelMap modelMap) {
 
-        ModelAndView model = new ModelAndView("framework");
+        ModelAndView model = new ModelAndView("framework", modelMap);
 
 
         List<User> listUsers = userDao.list();

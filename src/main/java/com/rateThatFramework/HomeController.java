@@ -3,12 +3,11 @@ package com.rateThatFramework;
 
 import com.rateThatFramework.dao.*;
 import com.rateThatFramework.model.*;
-import org.hibernate.Hibernate;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -30,21 +29,22 @@ public class HomeController {
 
 
     @RequestMapping(value = "/home")
-    public ModelAndView home(ModelMap input) {
-        ModelAndView model = new ModelAndView("home");
-        model.addAllObjects(input);
+    public ModelAndView home(ModelMap model) {
+        //ModelAndView MAW = new ModelAndView("home", modelMap);
+
+        System.out.println("In homecontroller: " + model.get("user"));
 
         List<User> listUsers = userDao.list();
-        model.addObject("userList", listUsers);
+        model.addAttribute("userList", listUsers);
 
         List<Framework> listFramework = frameDao.list();
-        model.addObject("frameworkList", listFramework);
+        model.addAttribute("frameworkList", listFramework);
 
         List<Rating> listRating = ratingDao.list();
-        model.addObject("ratingList", listRating);
+        model.addAttribute("ratingList", listRating);
 
         List<Review> listReview = reviewDao.list();
-        model.addObject("reviewList", listReview);
-        return model;
+        model.addAttribute("reviewList", listReview);
+        return new ModelAndView("home", model);
     }
 }
