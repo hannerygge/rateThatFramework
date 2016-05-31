@@ -159,8 +159,7 @@ public class FrameworkController {
     @RequestMapping(value = "/review/framework", method = RequestMethod.POST)
     public String reviewFramework(@ModelAttribute("reviewframework") @Valid Framework input, RedirectAttributes redir ){
 
-
-            redir.addFlashAttribute("framework", input.getId());
+            redir.addFlashAttribute("framework", input);
             return "redirect:/review";
 
 

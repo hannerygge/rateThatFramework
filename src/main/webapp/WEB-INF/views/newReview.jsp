@@ -16,14 +16,24 @@
 <body>
 <%  HttpSession session1 = request.getSession();
     User test = (User)session1.getAttribute("user");
+
     if(test == null){
 %>
 <c:redirect url="login"/>
 <%
 }
 else { %>
-
+${sessionScope.user} and ${framework}
     <form:form action="review" method="post" id="review">
+        <!--input type="hidden" name="user" value="${sessionScope.user}"-->
+        <!--input type="hidden" name="framework" value="${framework}"-->
+        <td>
+            <form:hidden path="user" value="${sessionScope.user}"/>
+        </td>
+        <td>
+            <form:hidden path="framework" value="${framework}"/>
+        </td>
+
         <input name="review" placeholder="Review">
         <input type="submit" value="Register review">
     </form:form>

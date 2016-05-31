@@ -13,10 +13,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -38,39 +40,45 @@ public class ReviewController {
     private RatingDAO ratingDao;
 
 
-
+    /*
     @RequestMapping(value="/newReview", method = RequestMethod.GET)
     public String init(ModelMap modelMap) {
         modelMap.put("info", "Hello User");
         return "newReview";
-    }
+    }*/
 
 
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
-    public ModelAndView test(ModelMap modelMap) {
+    public ModelAndView test(ModelMap model, RedirectAttributes redir) {
 
-        ModelAndView model = new ModelAndView("newReview");
+        System.out.println("In reviewcontroller: " + model.get("framework"));
+
+        //ModelAndView model = new ModelAndView("newReview");
 
         List<User> listUsers = userDao.list();
-        model.addObject("userList", listUsers);
+        model.addAttribute("userList", listUsers);
 
         List<Framework> listFramework = frameDao.list();
-        model.addObject("frameworkList", listFramework);
+        model.addAttribute("frameworkList", listFramework);
 
         List<Rating> listRating = ratingDao.list();
-        model.addObject("ratingList", listRating);
+        model.addAttribute("ratingList", listRating);
 
         List<Review> listReview = reviewDao.list();
-        model.addObject("reviewList", listReview);
-        return model;
+        model.addAttribute("reviewList", listReview);
+
+        return new ModelAndView("newReview", model);
 
     }
 
 
     @RequestMapping(value= "/review", method = RequestMethod.POST)
-    public ModelAndView submit(ModelMap modelMap, @ModelAttribute("Review") @Valid Review review) {
+    public ModelAndView submit(ModelMap model, @ModelAttribute("Review") @Valid Review review, BindingResult result) {
         DBHandler db = new DBHandler();
+
+
+        System.out.println("In submit " + review.getFramework() + ", " + review.getUser() + ", " + review.getReview());
 
         User user = new User();
         Framework framework = new Framework();
@@ -99,17 +107,19 @@ public class ReviewController {
 
         db.insertReviewQuery(r);
 
+        return new ModelAndView("framework", model);
 
+        /*
         if (1 > 0) {
-            modelMap.put("","Successfully added user :D" );
-            return test(modelMap);
+            model.put("","Successfully added user :D" );
+            return test(model);
         }
         else
         {
-            modelMap.put("", "Could not register user!");
-            return test(modelMap);
+            model.put("", "Could not register user!");
+            return test(model);
 
-        }
+        }*/
 
     }
 
