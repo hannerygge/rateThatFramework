@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.awt.*;
@@ -153,6 +154,26 @@ public class FrameworkController {
             return edit(modelMap);
         }
 
+     }
+
+    @RequestMapping(value = "/review/framework", method = RequestMethod.POST)
+    public ModelAndView reviewFramework(ModelMap modelMap, @ModelAttribute("framework") @Valid Framework input, RedirectAttributes redir ){
+
+        DBHandler db = new DBHandler();
+
+        boolean rows = db.deleteById(Framework.class, input.getId());
+
+        if (rows) {
+            //modelMap.put("","Successfully deleted user" );
+            return edit(modelMap);
+        }
+        else
+        {
+            //modelMap.put("", "Could not delete user!");
+            return edit(modelMap);
+        }
+
     }
+
 
 }

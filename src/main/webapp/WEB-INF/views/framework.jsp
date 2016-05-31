@@ -40,6 +40,14 @@
                     <input type="submit" value="Delete Framework"></td>
             </form:form>
 
+            <form:form action="/review/framework" method="post" modelAttribute="framework">
+
+                <td>
+                    <input type="hidden" name="id" value=${framework.id}>
+
+                    <input type="submit" value="Review Framework"></td>
+            </form:form>
+
         </tr>
     </c:forEach>
 
