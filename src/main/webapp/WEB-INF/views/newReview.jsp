@@ -1,3 +1,4 @@
+<%@ page import="com.rateThatFramework.model.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,13 +14,20 @@
     <title>Register new review</title>
 </head>
 <body>
-
+<%  HttpSession session1 = request.getSession();
+    User test = (User)session1.getAttribute("user");
+    if(test == null){
+%>
+<c:redirect url="login"/>
+<%
+}
+else { %>
 
     <form:form action="review" method="post" id="review">
         <input name="review" placeholder="Review">
         <input type="submit" value="Register review">
     </form:form>
 
-
+<% } %>
 </body>
 </html>

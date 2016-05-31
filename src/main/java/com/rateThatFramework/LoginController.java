@@ -45,13 +45,10 @@ public class LoginController {
         System.out.println("checkeduser is " + checkeduser);
         if(checkeduser == null){
             redir.addFlashAttribute("error", "Invalid UserName / Password");
-            //status.setComplete();
             return "redirect:login";
         }
         else {
-            //redir.addFlashAttribute("user", checkeduser);
             session.setAttribute("user", checkeduser);
-            //status.setComplete();
             return "redirect:home";
         }
 

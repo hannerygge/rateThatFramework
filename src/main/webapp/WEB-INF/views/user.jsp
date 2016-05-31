@@ -1,3 +1,4 @@
+<%@ page import="com.rateThatFramework.model.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,6 +11,14 @@
     <title>Framework</title>
 </head>
 <body>
+<%  HttpSession session1 = request.getSession();
+    User test = (User)session1.getAttribute("user");
+    if(test == null){
+%>
+<c:redirect url="login"/>
+<%
+}
+else { %>
 
 <table border="1">
     <th>ID</th>
@@ -48,6 +57,6 @@
     <input type="submit" id="goToHomeButton" value="Home">
 </form:form>
 
-
+<% } %>
 </body>
 </html>

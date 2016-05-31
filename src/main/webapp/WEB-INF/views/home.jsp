@@ -12,8 +12,7 @@
 </head>
 <body>
 <%  HttpSession session1 = request.getSession();
-    User test = (User)session1.getAttribute("user");//(User)request.getSession().getAttribute("user");//(User)request.getAttribute("user");
-    System.out.println(test);
+    User test = (User)session1.getAttribute("user");
     if(test == null){
         %>
         <c:redirect url="login"/>
@@ -115,6 +114,11 @@
     <form:form action="newFramework" method="get">
         <input type="submit" id="goToEditButton" value="Add Framework">
     </form:form>
+
+    <form:form action="logout" method="post">
+        <input type="submit" value="Logout">
+    </form:form>
+
 </div>
 <% } %>
 </body>
